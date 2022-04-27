@@ -10,6 +10,7 @@ public class Nematode
     private String gender;
     private boolean eyes;
 
+
     @Override
     public String toString()
     {
@@ -38,6 +39,77 @@ public class Nematode
     }
 
     
+
+    public void render(NematodeVisualiser pa)
+    {
+        final float CIRCLE_WIDTH = pa.width/22;
+        final float LINE_WIDTH = CIRCLE_WIDTH / 10;
+
+        final float CIRCLE_X = pa.width/2;
+        float circleY;
+
+        float eyeX, eyeY;
+
+        pa.colorMode(pa.HSB);
+        pa.noStroke();
+
+        //draw circles top to bottom
+        for(int i = 0; i < length; i++)
+        {
+            pa.fill(0, 255, 255);
+            
+            circleY = pa.height/2 + (i * (CIRCLE_WIDTH/2 + (CIRCLE_WIDTH- LINE_WIDTH)/2));
+
+            //draw limbs
+            if(limbs == true)
+            {
+                pa.stroke(0, 255, 255);
+                pa.strokeWeight(LINE_WIDTH);
+
+                pa.line(CIRCLE_X - CIRCLE_WIDTH, circleY, CIRCLE_X + CIRCLE_WIDTH, circleY);
+            }
+            pa.noStroke();
+
+            //draw eyes
+            if(eyes == true && i == 0)
+            {
+                pa.stroke(0, 255, 255);
+
+                //eye one
+                eyeX = CIRCLE_X - (CIRCLE_WIDTH * 0.75f);
+                eyeY = circleY - (CIRCLE_WIDTH * 0.75f);
+
+                pa.line(CIRCLE_X, circleY, eyeX, eyeY);
+
+                
+                pa.fill(0);
+                pa.circle(eyeX, eyeY, LINE_WIDTH*2);
+
+
+                //eye two
+                eyeX = CIRCLE_X + (CIRCLE_WIDTH * 0.75f);
+                eyeY = circleY - (CIRCLE_WIDTH * 0.75f);
+
+                pa.line(CIRCLE_X, circleY, eyeX, eyeY);
+
+                pa.fill(0);
+                pa.circle(eyeX, eyeY, LINE_WIDTH*2);
+
+
+            }
+            pa.noStroke();
+
+            //draw circle
+            pa.fill(0, 255, 255);
+            pa.circle(CIRCLE_X, circleY, CIRCLE_WIDTH);
+            pa.fill(0);
+            pa.circle(CIRCLE_X, circleY, CIRCLE_WIDTH - (LINE_WIDTH*2));
+
+            
+
+        }
+
+    }
 
     public String getName() {
         return this.name;
