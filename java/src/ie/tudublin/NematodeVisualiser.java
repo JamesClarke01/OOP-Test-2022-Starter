@@ -59,7 +59,6 @@ public class NematodeVisualiser extends PApplet
 		{
 			Nematode n = new Nematode(r);
 			nematodes.add(n);
-			//System.out.println(n);
 		}
 	}
 
@@ -68,6 +67,5 @@ public class NematodeVisualiser extends PApplet
 	{	
 		background(0);
 		nematodes.get(currentNematode).render(this, map(currentNematode, 0,  nematodes.size()-1, 0, 255));
-		//System.out.println(nematodes.get(currentNematode));
 	}
 }

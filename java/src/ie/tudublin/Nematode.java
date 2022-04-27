@@ -63,6 +63,7 @@ public class Nematode
         pa.text(name, CIRCLE_X, pa.height/4);
 
         pa.noStroke();
+        
         //draw circles top to bottom
         for(int i = 0; i < length; i++)
         {
