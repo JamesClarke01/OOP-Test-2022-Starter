@@ -95,7 +95,6 @@ public class Nematode
                 pa.fill(0);
                 pa.circle(eyeX, eyeY, LINE_WIDTH*2);
 
-
             }
             pa.noStroke();
 
