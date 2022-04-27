@@ -108,6 +108,20 @@ public class Nematode
             }
             pa.noStroke();
 
+            
+            //draw gender
+            if(i == length-1 && gender == "m")  
+            {
+                eyeX = CIRCLE_X;
+                eyeY = circleY + CIRCLE_WIDTH;
+
+                pa.stroke(c, 255, 255);
+                pa.strokeWeight(LINE_WIDTH);
+                pa.line(CIRCLE_X, circleY, eyeX, eyeY);
+
+            }
+            pa.noStroke();
+
             //draw circle
             pa.fill(c, 255, 255);
             pa.circle(CIRCLE_X, circleY, CIRCLE_WIDTH);
