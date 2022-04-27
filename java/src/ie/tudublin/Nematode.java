@@ -1,15 +1,34 @@
 package ie.tudublin;
 
+import processing.data.TableRow;
+
 public class Nematode
 {
     private String name;
     private int length;
     private boolean limbs;
-    private char gender;
+    private String gender;
     private boolean eyes;
 
+    @Override
+    public String toString()
+    {
+        return "Nematode - Name: " + name + ", Length: " + length + ", Limbs: " + limbs + ", Gender: " + gender + ", Eyes: " + eyes;
+    }
+
+    public Nematode(TableRow tr)
+    {
+        this(
+            tr.getString("name"),
+            tr.getInt("length"),
+            tr.getInt("limbs") == 1,
+            tr.getString("gender"),
+            tr.getInt("eyes") == 1
+        );
+    }
+
     //constructor
-    public Nematode(String name, int length, boolean limbs, char gender, boolean eyes)
+    public Nematode(String name, int length, boolean limbs, String gender, boolean eyes)
     {
         this.name = name;
         this.length = length;
@@ -18,11 +37,7 @@ public class Nematode
         this.eyes = eyes;
     }
 
-    @Override
-    public String toString()
-    {
-        return "Nematode - Name: " + name + ", Length: " + length + ", Limbs: " + limbs + ", Gender: " + gender + ", Eyes: " + eyes;
-    }
+    
 
     public String getName() {
         return this.name;
@@ -52,11 +67,11 @@ public class Nematode
         this.limbs = limbs;
     }
 
-    public char getGender() {
+    public String getGender() {
         return this.gender;
     }
 
-    public void setGender(char gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 
