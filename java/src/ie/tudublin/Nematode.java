@@ -40,30 +40,40 @@ public class Nematode
 
     
 
-    public void render(NematodeVisualiser pa)
+    public void render(NematodeVisualiser pa, float c)
     {
         final float CIRCLE_WIDTH = pa.width/22;
         final float LINE_WIDTH = CIRCLE_WIDTH / 10;
 
         final float CIRCLE_X = pa.width/2;
+        
+        
+        
         float circleY;
 
         float eyeX, eyeY;
 
         pa.colorMode(pa.HSB);
-        pa.noStroke();
+        
+        pa.fill(c, 255, 255);
+        
+        //write name
+        pa.textAlign(pa.CENTER);
+        pa.textSize(40);
+        pa.text(name, CIRCLE_X, pa.height/4);
 
+        pa.noStroke();
         //draw circles top to bottom
         for(int i = 0; i < length; i++)
         {
-            pa.fill(0, 255, 255);
+            pa.fill(c, 255, 255);
             
             circleY = pa.height/2 + (i * (CIRCLE_WIDTH/2 + (CIRCLE_WIDTH- LINE_WIDTH)/2));
 
             //draw limbs
             if(limbs == true)
             {
-                pa.stroke(0, 255, 255);
+                pa.stroke(c, 255, 255);
                 pa.strokeWeight(LINE_WIDTH);
 
                 pa.line(CIRCLE_X - CIRCLE_WIDTH, circleY, CIRCLE_X + CIRCLE_WIDTH, circleY);
@@ -73,7 +83,7 @@ public class Nematode
             //draw eyes
             if(eyes == true && i == 0)
             {
-                pa.stroke(0, 255, 255);
+                pa.stroke(c, 255, 255);
 
                 //eye one
                 eyeX = CIRCLE_X - (CIRCLE_WIDTH * 0.75f);
@@ -99,7 +109,7 @@ public class Nematode
             pa.noStroke();
 
             //draw circle
-            pa.fill(0, 255, 255);
+            pa.fill(c, 255, 255);
             pa.circle(CIRCLE_X, circleY, CIRCLE_WIDTH);
             pa.fill(0);
             pa.circle(CIRCLE_X, circleY, CIRCLE_WIDTH - (LINE_WIDTH*2));

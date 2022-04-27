@@ -67,7 +67,7 @@ public class NematodeVisualiser extends PApplet
 	public void draw()
 	{	
 		background(0);
-		nematodes.get(currentNematode).render(this);
+		nematodes.get(currentNematode).render(this, map(currentNematode, 0,  nematodes.size()-1, 0, 255));
 		//System.out.println(nematodes.get(currentNematode));
 	}
 }
